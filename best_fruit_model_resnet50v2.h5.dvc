@@ -1,0 +1,5 @@
+outs:
+- md5: 69ff19e72ab3ff92aa2edfe41f9d7886
+  size: 116791360
+  hash: md5
+  path: best_fruit_model_resnet50v2.h5
