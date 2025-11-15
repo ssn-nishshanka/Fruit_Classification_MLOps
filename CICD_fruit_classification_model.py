@@ -142,9 +142,9 @@ for folder in fruit_folders:
     src_folder = os.path.join(source_dir, folder)
     dst_folder = os.path.join(destination_dir, folder)
 
-    # to only copy if destination folder doesn't already exist
-    if not os.path.exists(dst_folder):
-        shutil.copytree(src_folder, dst_folder)
+    # Copy folder, allowing existing folders
+    shutil.copytree(src_folder, dst_folder, dirs_exist_ok=True)
+
 
 print("All fruit folders copied to:", destination_dir)
 
