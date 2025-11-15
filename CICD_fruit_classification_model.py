@@ -14,24 +14,34 @@ import zipfile
 import shutil
 from sklearn.model_selection import train_test_split
 
-# Base paths
 DATA_DIR = "data"
 ZIP_FILE = os.path.join(DATA_DIR, "fruit_dataset.zip")
-EXTRACTED_DIR = os.path.join(DATA_DIR, "fruit_data", "fruit_dataset", "fruit_dataset", "fruit_dataset")  
+EXTRACTED_DIR = os.path.join(DATA_DIR, "fruit_dataset")
+
+os.makedirs(EXTRACTED_DIR, exist_ok=True)
+
 SPLIT_DIR = os.path.join(DATA_DIR, "fruit_split_data")    # train/val/test folders
 MODEL_PATH = "best_fruit_model_resnet50v2.h5"
 MLFLOW_ARTIFACT_PATH = "mlflow_runs"
 
 os.makedirs(MLFLOW_ARTIFACT_PATH, exist_ok=True)
 
-# Unzip dataset if needed
-import zipfile
-if not os.path.exists(EXTRACTED_DIR):
-    with zipfile.ZipFile(ZIP_FILE, 'r') as zip_ref:
-        zip_ref.extractall(EXTRACTED_DIR)
-    print(f"Dataset extracted to {EXTRACTED_DIR}")
-else:
-    print(f"Dataset already extracted at {EXTRACTED_DIR}")
+with zipfile.ZipFile(ZIP_FILE, 'r') as zip_ref:
+    for member in zip_ref.namelist():
+        # remove top-level folder from path
+        parts = member.split('/')
+        filename = "/".join(parts[1:])  # skip the first folder
+        if filename:  # skip empty strings
+            dest_path = os.path.join(EXTRACTED_DIR, filename)
+            if member.endswith('/'):
+                os.makedirs(dest_path, exist_ok=True)
+            else:
+                os.makedirs(os.path.dirname(dest_path), exist_ok=True)
+                with open(dest_path, 'wb') as f:
+                    f.write(zip_ref.read(member))
+
+print(f"Dataset extracted to {EXTRACTED_DIR}")
+
 
 import tensorflow as tf
 import mlflow
@@ -139,11 +149,10 @@ print("Fruit Classes:", fruit_folders)
 os.makedirs(destination_dir, exist_ok=True)
 
 for folder in fruit_folders:
-    src_folder = os.path.join(source_dir, folder)
+    src_folder = os.path.join(EXTRACTED_DIR, folder)
     dst_folder = os.path.join(destination_dir, folder)
-
-    # Copy folder, allowing existing folders
-    shutil.copytree(src_folder, dst_folder, dirs_exist_ok=True)
+    if os.path.isdir(src_folder):
+        shutil.copytree(src_folder, dst_folder, dirs_exist_ok=True)
 
 
 print("All fruit folders copied to:", destination_dir)
