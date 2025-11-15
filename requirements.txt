@@ -1,0 +1,28 @@
+# Deep Learning
+tensorflow==2.15.0  # includes keras
+
+# Data
+numpy>=1.24,<1.26
+pandas==2.1.1
+scikit-learn==1.3.0
+scikit-image>=0.20.0,<0.21
+
+# Visualization
+matplotlib==3.8.0
+seaborn==0.13.2
+Pillow>=10.1,<12
+
+# MLflow & tracking
+mlflow==2.14.3
+pyngrok==7.4.0
+
+# MLflow dependencies
+docker<8
+graphene<4
+querystring-parser<2
+gunicorn<23
+importlib-metadata<8
+packaging<25
+pyarrow>=15.0.0,<19
+pytz<2025
+protobuf>=4.25.3,<6
