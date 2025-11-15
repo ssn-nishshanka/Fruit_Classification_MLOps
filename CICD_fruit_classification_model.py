@@ -17,7 +17,7 @@ from sklearn.model_selection import train_test_split
 # Base paths
 DATA_DIR = "data"
 ZIP_FILE = os.path.join(DATA_DIR, "fruit_dataset.zip")
-EXTRACTED_DIR = os.path.join(DATA_DIR, "fruit_data", "fruit_dataset", "fruit_dataset")
+EXTRACTED_DIR = os.path.join(DATA_DIR, "fruit_dataset")
 SPLIT_DIR = os.path.join(DATA_DIR, "fruit_split_data")    # train/val/test folders
 MODEL_PATH = "best_fruit_model_resnet50v2.h5"
 MLFLOW_ARTIFACT_PATH = "mlflow_runs"
