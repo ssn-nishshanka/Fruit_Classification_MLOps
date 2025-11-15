@@ -26,3 +26,5 @@ packaging<25
 pyarrow>=15.0.0,<19
 pytz<2025
 protobuf>=4.25.3,<6
+flask
+dvc[all]

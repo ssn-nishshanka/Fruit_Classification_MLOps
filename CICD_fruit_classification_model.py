@@ -22,7 +22,7 @@ os.makedirs(EXTRACTED_DIR, exist_ok=True)
 
 SPLIT_DIR = os.path.join(DATA_DIR, "fruit_split_data")    # train/val/test folders
 MODEL_PATH = "best_fruit_model_resnet50v2.h5"
-MLFLOW_ARTIFACT_PATH = "mlflow_runs"
+MLFLOW_ARTIFACT_PATH = "mlruns"
 
 os.makedirs(MLFLOW_ARTIFACT_PATH, exist_ok=True)
 
@@ -107,8 +107,6 @@ if mlflow.get_experiment_by_name(experiment_name) is None:
 
 mlflow.set_experiment(experiment_name)
 print(f"MLflow experiment '{experiment_name}' is set!")
-
-# View locally: mlflow ui --backend-store-uri mlflow_runs
 
 # Retrieve experiment details
 exp = mlflow.get_experiment_by_name(experiment_name)

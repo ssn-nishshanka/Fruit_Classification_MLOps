@@ -1,3 +1,18 @@
+# CI/CD Pipeline for Fruit Classification Project
+
+# This pipeline automates the tasks:
+# 1. Pulls code from GitHub and data from DVC remote (Google Drive)
+# 2. Installs project dependencies
+# 3. Runs the model training script
+# 4. Builds a Docker image for the Flask API
+# 5. Cleans up any existing Docker container with the same name
+# 6. Runs the Docker container for the API
+# 7. Executes drift monitoring script to log metrics in MLflow
+
+# for local testing:
+# Run MLflow UI locally: mlflow ui --port 5001 --backend-store-uri ./mlruns
+# Access Flask API locally: http://localhost:5000
+
 name: CI Pipeline
 
 on:
@@ -44,3 +59,17 @@ jobs:
 
     - name: Run training script
       run: python CICD_fruit_classification_model.py
+
+    - name: Build Docker image
+      run: docker build -t fruit-api .
+
+    - name: Cleanup existing Docker container
+      run: |
+        docker stop fruit-api || true
+        docker rm fruit-api || true
+
+    - name: Run Docker container
+      run: docker run -d -p 5000:5000 --name fruit-api fruit-api
+
+    - name: Run drift monitoring
+      run: python monitor_drift.py
