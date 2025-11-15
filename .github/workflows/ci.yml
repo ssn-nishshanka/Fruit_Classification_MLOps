@@ -26,20 +26,20 @@ jobs:
         pip install -r requirements.txt
         pip install "dvc[gdrive]" mlflow tensorflow
 
-    - name: Configure DVC remote with service account
+    - name: Save service account JSON to file
       env:
         GDRIVE_SERVICE_ACCOUNT_JSON: ${{ secrets.GDRIVE_SA_JSON }}
       run: |
-        # Add DVC remote
+        echo "$GDRIVE_SERVICE_ACCOUNT_JSON" > gdrive_sa.json
+
+    - name: Configure DVC remote with service account
+      run: |
         dvc remote add -f myremote gdrive://1_eJKfLMOIfnIKQ84QyGFlDBuyU7yXvDB
-        # Use service account
         dvc remote modify myremote gdrive_use_service_account true
-        # Set default remote
+        dvc remote modify myremote gdrive_service_account_json_file_path gdrive_sa.json
         dvc config core.remote myremote
 
     - name: Pull DVC data
-      env:
-        GDRIVE_SERVICE_ACCOUNT_JSON: ${{ secrets.GDRIVE_SA_JSON }}
       run: dvc pull -r myremote
 
     - name: Run training script
