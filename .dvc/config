@@ -1,4 +1,0 @@
-['remote "myremote"']
-    url = gdrive://1_eJKfLMOIfnIKQ84QyGFlDBuyU7yXvDB
-    gdrive_use_service_account = true
-    gdrive_service_account_json_file_path = C:\Users\HP\Downloads\arcane-attic-476316-m7-72eff7ee8d04.json

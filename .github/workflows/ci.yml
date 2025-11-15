@@ -18,21 +18,29 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: 3.11  # <-- updated to 3.11
+        python-version: 3.11
 
     - name: Install dependencies
       run: |
-        pip install --upgrade pip
+        python -m pip install --upgrade pip
         pip install -r requirements.txt
-        pip install dvc[all] mlflow tensorflow
+        pip install "dvc[gdrive]" mlflow tensorflow
 
-    - name: Configure DVC remote with secrets
+    - name: Configure DVC remote with service account
+      env:
+        GDRIVE_SA_JSON: ${{ secrets.GDRIVE_SA_JSON }}  # <-- your service account JSON stored in GitHub Secrets
       run: |
-        dvc remote modify myremote gdrive_client_id ${{ secrets.GDRIVE_CLIENT_ID }}
-        dvc remote modify myremote gdrive_client_secret ${{ secrets.GDRIVE_CLIENT_SECRET }}
+        # Save JSON to file
+        echo "$GDRIVE_SA_JSON" > sa.json
+
+        # Set up DVC remote
+        dvc remote add -f myremote gdrive://1_eJKfLMOIfnIKQ84QyGFlDBuyU7yXvDB
+        dvc remote modify myremote gdrive_use_service_account true
+        dvc remote modify myremote gdrive_service_account_json_path sa.json
+        dvc config core.remote myremote
 
     - name: Pull DVC data
-      run: dvc pull
+      run: dvc pull -r myremote
 
     - name: Run training script
       run: python CICD_fruit_classification_model.py
