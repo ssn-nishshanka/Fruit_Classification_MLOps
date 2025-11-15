@@ -8,8 +8,6 @@
 /best_fruit_model_resnet50v2.h5
 /models/
 
-# DVC local config
-.dvc/config.local
 
 # Python cache
 __pycache__/
