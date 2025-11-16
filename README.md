@@ -60,11 +60,11 @@ git clone https://github.com/ssn-nishshanka/Fruit_Classification_MLOps.git
 
 cd Fruit_Classification_ML0p
 
-3. Install Dependencies
+2. Install Dependencies
 
 pip install -r requirements.txt
 
-5. Run Flask API Locally
+3. Run Flask API Locally
 
 python app.py
 
