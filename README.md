@@ -55,13 +55,14 @@ Logs are visible locally on mlflow ui.
 ### Setup & Usage
 
 1. Clone the Repository
-git clone https://github.com/ssn-nishshanka/Fruit_Classification_ML0ps.git
+git clone https://github.com/ssn-nishshanka/Fruit_Classification_MLOps.git
+
 cd Fruit_Classification_ML0p
 
-2. Install Dependencies
+3. Install Dependencies
 pip install -r requirements.txt
 
-3. Run Flask API Locally
+4. Run Flask API Locally
 python app.py
 
 Access the API at: http://localhost:5000
