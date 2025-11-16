@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/HP/Fruit_Classification_MLOps/mlruns/197524528443970558/73dafec544bc4f13bb4bb40998021fbe/artifacts
+end_time: 1763269125650
+entry_point_name: ''
+experiment_id: '197524528443970558'
+lifecycle_stage: active
+run_id: 73dafec544bc4f13bb4bb40998021fbe
+run_name: drift_distribution
+run_uuid: 73dafec544bc4f13bb4bb40998021fbe
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763269125484
+status: 3
+tags: []
+user_id: HP
