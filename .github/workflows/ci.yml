@@ -10,7 +10,6 @@
 # 7. Executes drift monitoring script to log metrics in MLflow
 
 # for local testing:
-# Run MLflow UI locally: mlflow ui --port 5001 --backend-store-uri ./mlruns
 # Access Flask API locally: http://localhost:5000
 
 name: CI Pipeline

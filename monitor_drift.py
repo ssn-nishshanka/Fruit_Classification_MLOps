@@ -9,7 +9,7 @@ import mlflow
 MODEL_PATH = "best_fruit_model_resnet50v2.h5"
 IMAGES_FOLDER = "images/"
 CONFIDENCE_THRESHOLD = 50.0  # percent
-CONTINUOUS_MONITORING = False # run once for CI/CD
+CONTINUOUS_MONITORING = False # run once for CI/CD, True for continuous monitoring
 INTERVAL_SECONDS = 24 * 3600  # daily
 EXPERIMENT_NAME = "Fruit_Classification_Production"
 
