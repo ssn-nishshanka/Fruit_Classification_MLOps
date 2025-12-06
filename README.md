@@ -5,7 +5,7 @@ End-to-end MLOps project for classifying ripe vs unripe fruits using **ResNet50V
 ## Key Features
 
 ### Model Training & Experiment Tracking
-- Conducted experiments with Grid Search, Random Search, and Bayesian Optimization.
+- Conducted experiments with Manual Search, Grid Search, Random Search, and Bayesian Optimization.
 - Tracked parameters, metrics, and artifacts using **MLflow UI**.
 
 ### Model Registry & Deployment
@@ -16,7 +16,9 @@ End-to-end MLOps project for classifying ripe vs unripe fruits using **ResNet50V
 - Code, dataset, and models versioned using **Git + DVC**.
 
 ### Monitoring & Drift Detection
-- Monitors model performance, top-class confidence, and class distribution.
+- **Model performance** – tracks metrics such as accuracy and loss over time.  
+- **Top-class prediction confidence** – monitors how confident the model is in its most likely prediction for each input.  
+- **Class distribution** – checks how often each class (ripe vs unripe) is predicted, helping detect data or prediction drift.
 - Logs visible in **MLflow UI**; alerts trigger on drift or degradation.
 
 ## Tech Stack
