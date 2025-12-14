@@ -2,6 +2,8 @@
 
 End-to-end MLOps project for classifying ripe vs unripe fruits using **ResNet50V2** as the base model. Demonstrates a full ML lifecycle: experiment tracking, version control, automated CI/CD deployment, and production monitoring.
 
+<img width="1790" height="662" alt="image" src="https://github.com/user-attachments/assets/9059c6a7-8396-4804-a6b2-5f945b72c654" />
+
 ## Key Features
 
 ### Model Training & Experiment Tracking
