@@ -8,6 +8,8 @@ End-to-end MLOps project for classifying ripe vs unripe fruits using **ResNet50V
 - Conducted experiments with Manual Search, Grid Search, Random Search, and Bayesian Optimization.
 - Tracked parameters, metrics, and artifacts using **MLflow UI**.
 
+  <img width="1785" height="785" alt="image" src="https://github.com/user-attachments/assets/14b054fe-0557-4a03-8e54-6a65b0ccf723" />
+
 ### Model Registry & Deployment
 - Best model registered in **MLflow Model Registry** and promoted from Staging → Production.
 - Deployed via **Dockerized Flask API** with automated **CI/CD using GitHub Actions**.
