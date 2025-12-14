@@ -1,8 +1,3 @@
-# In Colab, we ran multiple training loops (31 runs) to try different hyperparameters
-# and log all experiments using MLflow. The best model was selected and saved.
-#
-# For CI/CD purposes, we only run one training session per pipeline run.
-
 # The CI/CD training script trains a ResNet50V2-based fruit classifier once per pipeline run, logging all hyperparameters, data preprocessing, 
 # augmentation, model architecture, and evaluation metrics to MLflow. The trained model is saved locally to MODEL_PATH for deployment.
 # CI/CD automates the training workflow, ensuring the model runs correctly, logs metrics reliably, and is packaged for deployment automatically 
